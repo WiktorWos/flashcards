@@ -6,7 +6,7 @@ export default function Login() {
   const { switchToSignup } = useContext(AccountContext);
   return (
     <View style={styles.formView}>
-      <Text style={styles.title}>Sign in</Text>
+      <Text style={styles.title}>SIGN IN</Text>
       <TextInput
         placeholder="Email"
         style={styles.inputStyle}
@@ -25,21 +25,29 @@ export default function Login() {
       <Pressable style={styles.button}>
         <Text style={styles.btnText}>Sign in</Text>
       </Pressable>
-      <Pressable style={styles.newUser} onPress={switchToSignup}>
-        <Text>I'm a new user. </Text>
-        <Text style={styles.linkText}>Sign up!</Text>
-      </Pressable>
+
+      <View style={styles.newUserContainer}>
+        <Pressable style={styles.newUser} onPress={switchToSignup}>
+          <Text>I'm a new user. </Text>
+          <Text style={styles.linkText}>Sign up!</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  newUserContainer: {
+    width: "100%",
+    alignItems: "center",
+  },
   title: {
     marginTop: 50,
-    fontSize: 25,
+    fontSize: 50,
     fontWeight: "bold",
   },
   button: {
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 18,
@@ -57,21 +65,21 @@ const styles = StyleSheet.create({
   },
   formView: {
     marginTop: 40,
-    backgroundColor: "#EEEEEE",
+    marginLeft: 40,
+    marginRight: 40,
+    // backgroundColor: "#EEEEEE",
     height: "100%",
-    borderTopEndRadius: 40,
-    borderTopStartRadius: 40,
-    alignItems: "center",
+    // borderTopEndRadius: 40,
+    // borderTopStartRadius: 40,
+    alignItems: "flex-start",
   },
   inputStyle: {
     marginTop: 30,
-    width: 300,
+    width: 260,
     height: 57,
     paddingHorizontal: 10,
-    borderRadius: 12,
     backgroundColor: "white",
-    borderColor: "#63A18F",
-    borderWidth: 2,
+    borderBottomWidth: 2,
   },
   passwordContainter: {
     alignItems: "flex-end",

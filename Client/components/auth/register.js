@@ -7,7 +7,7 @@ export default function Register() {
 
   return (
     <View style={styles.formView}>
-      <Text style={styles.title}>Create account</Text>
+      <Text style={styles.title}>SIGN UP</Text>
       <TextInput
         placeholder="Email"
         style={styles.inputStyle}
@@ -26,21 +26,28 @@ export default function Register() {
       <Pressable style={styles.button}>
         <Text style={styles.btnText}>Sign up</Text>
       </Pressable>
-      <Pressable style={styles.newUser} onPress={switchToSignin}>
-        <Text>I'm aready a member. </Text>
-        <Text style={styles.linkText}>Sign in!</Text>
-      </Pressable>
+      <View style={styles.alreadyMemberContainer}>
+        <Pressable style={styles.newUser} onPress={switchToSignin}>
+          <Text>I'm aready a member. </Text>
+          <Text style={styles.linkText}>Sign in!</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  alreadyMemberContainer: {
+    width: "100%",
+    alignItems: "center",
+  },
   title: {
     marginTop: 30,
-    fontSize: 25,
+    fontSize: 50,
     fontWeight: "bold",
   },
   button: {
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 18,
@@ -57,21 +64,18 @@ const styles = StyleSheet.create({
     color: "white",
   },
   formView: {
-    backgroundColor: "#EEEEEE",
     height: "100%",
-    borderTopEndRadius: 40,
-    borderTopStartRadius: 40,
-    alignItems: "center",
+    alignItems: "flex-start",
+    marginRight: 40,
+    marginLeft: 40,
   },
   inputStyle: {
     marginTop: 30,
-    width: 300,
+    width: 260,
     height: 57,
     paddingHorizontal: 10,
-    borderRadius: 12,
     backgroundColor: "white",
-    borderColor: "#63A18F",
-    borderWidth: 2,
+    borderBottomWidth: 2,
   },
   passwordContainter: {
     alignItems: "flex-end",
