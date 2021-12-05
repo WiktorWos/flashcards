@@ -12,6 +12,7 @@ import {
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import QuickActions from "../quick-actions/quickActions";
 import Auth from "../auth/auth";
+import FlashcardSets from "../sets/sets";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +36,7 @@ export default function Tabs() {
       />
       <Tab.Screen
         name="learn"
-        component={Auth}
+        component={FlashcardSets}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faUserGraduate} color={color} size={30} />
