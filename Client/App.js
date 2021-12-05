@@ -5,6 +5,8 @@ import Auth from "./components/auth/auth";
 import QuickActions from "./components/quick-actions/quickActions";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import Tabs from "./components/navbar/tabs";
+import FlashcardSets from "./components/sets/sets";
+import Set from "./components/sets/set";
 
 const myTheme = {
   ...DefaultTheme,
