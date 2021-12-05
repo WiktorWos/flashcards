@@ -11,6 +11,7 @@ import LearnSVG from "../../assets/learn.svg";
 import ChatSVG from "../../assets/chat.svg";
 import SharedSVG from "../../assets/shared.svg";
 import StatsSVG from "../../assets/stats.svg";
+
 export default function QuickActions() {
   const LEARN_COLOR = "#00B0FF";
   const SHARED_COLOR = "#EF233C";
