@@ -8,6 +8,7 @@ import Tabs from "./components/navbar/tabs";
 import FlashcardSets from "./components/sets/sets";
 import Set from "./components/sets/set";
 import AddSet from "./components/sets/addSet";
+import Exercise from "./components/exercise/exercise";
 
 const myTheme = {
   ...DefaultTheme,
@@ -22,6 +23,6 @@ export default function App() {
     // <NavigationContainer theme={myTheme}>
     //   <Tabs />
     // </NavigationContainer>
-    <AddSet></AddSet>
+    <Exercise></Exercise>
   );
 }
