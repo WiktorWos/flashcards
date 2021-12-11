@@ -11,8 +11,10 @@ import LearnSVG from "../../assets/learn.svg";
 import ChatSVG from "../../assets/chat.svg";
 import SharedSVG from "../../assets/shared.svg";
 import StatsSVG from "../../assets/stats.svg";
+import { useNavigation } from "@react-navigation/native";
 
 export default function QuickActions() {
+  const navigation = useNavigation();
   const LEARN_COLOR = "#00B0FF";
   const SHARED_COLOR = "#EF233C";
   const CHAT_COLOR = "#F9A826";
@@ -22,7 +24,10 @@ export default function QuickActions() {
       <Text style={styles.hello}>Hello!</Text>
       <Text style={styles.title}>QUICK ACTIONS</Text>
       <View style={styles.row}>
-        <Pressable style={styles.actionWithDescripion}>
+        <Pressable
+          style={styles.actionWithDescripion}
+          onPress={() => navigation.navigate("learn")}
+        >
           <View style={[styles.action, { borderColor: LEARN_COLOR }]}>
             <LearnSVG width="133" height="96"></LearnSVG>
           </View>

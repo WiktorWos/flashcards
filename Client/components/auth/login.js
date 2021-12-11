@@ -1,8 +1,13 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
 import { StyleSheet, Text, View, Pressable, TextInput } from "react-native";
 import { AccountContext } from "./accountContext";
 
 export default function Login() {
+  const navigation = useNavigation();
+  function login() {
+    navigation.navigate("home");
+  }
   const { switchToSignup } = useContext(AccountContext);
   return (
     <View style={styles.formView}>
@@ -22,7 +27,7 @@ export default function Login() {
           <Text style={styles.linkText}>Forgot Password?</Text>
         </Pressable>
       </View>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={login}>
         <Text style={styles.btnText}>Sign in</Text>
       </Pressable>
 

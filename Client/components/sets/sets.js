@@ -6,11 +6,13 @@ import {
   TextInput,
   SafeAreaView,
   ScrollView,
+  Pressable,
 } from "react-native";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import Set from "./set";
 import { FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const DATA = [
   {
@@ -54,6 +56,7 @@ const DATA = [
 const renderItem = ({ item }) => <Set name={item.title}></Set>;
 
 export default function FlashcardSets() {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>LEARN</Text>
@@ -62,7 +65,9 @@ export default function FlashcardSets() {
           <FontAwesomeIcon icon={faSearch} size={25} />
           <TextInput style={styles.inputStyle} secureTextEntry={false} />
         </View>
-        <FontAwesomeIcon icon={faPlus} size={25} />
+        <Pressable onPress={() => navigation.navigate("add set")}>
+          <FontAwesomeIcon icon={faPlus} size={25} />
+        </Pressable>
       </View>
       <FlatList
         columnWrapperStyle={{
