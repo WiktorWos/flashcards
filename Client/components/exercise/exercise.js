@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,8 +7,6 @@ import {
   TextInput,
   SafeAreaView,
 } from "react-native";
-import FlashcardSVG from "../../assets/flashcard.svg";
-import Checkbox from "../ui-elements/checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCheck, faTimes, faUndo } from "@fortawesome/free-solid-svg-icons";
 import Drawer from "./drawer";
@@ -16,6 +14,93 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function Exercise() {
   const navigation = useNavigation();
+  const flashcards = [
+    {
+      frontWord: "Front1",
+      frontDesc: "Desc",
+      backWord: "Back",
+      backDesc: "Desc",
+      drawer: 1,
+    },
+    {
+      frontWord: "Front2",
+      frontDesc: "Desc",
+      backWord: "Back",
+      backDesc: "Desc",
+      drawer: 2,
+    },
+    {
+      frontWord: "Front2asd",
+      frontDesc: "Desc",
+      backWord: "Back",
+      backDesc: "Desc",
+      drawer: 2,
+    },
+    {
+      frontWord: "Front4",
+      frontDesc: "Desc",
+      backWord: "Back",
+      backDesc: "Desc",
+      drawer: 4,
+    },
+  ];
+
+  const [isFront, setFront] = useState(true);
+  const [flashcardsDone, setFlashcardsDone] = useState(0);
+  const [flashcardsCorrect, setFlashcardsCorrect] = useState(0);
+  const [currendDrawer, setCurrentDrawer] = useState(1);
+  const currentFlashcards = flashcards.filter(
+    (el) => el.drawer == currendDrawer
+  );
+  const sendCurrentNumToParent = (num) => {
+    if (num != currendDrawer) {
+      setCurrentDrawer(num);
+      setCurrentIndex(0);
+    }
+  };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  let renderedFlashcard;
+  const renderCurrentFlashcard = () => {
+    const currentFlashcard = currentFlashcards[currentIndex];
+    renderedFlashcard = (
+      <>
+        <Text style={styles.word}>
+          {isFront ? currentFlashcard.frontWord : currentFlashcard.backWord}
+        </Text>
+        <Text style={styles.description}>
+          {isFront ? currentFlashcard.frontDesc : currentFlashcard.backDesc}
+        </Text>
+      </>
+    );
+  };
+
+  const rememberOnClick = () => {
+    setFlashcardsCorrect(flashcardsCorrect + 1);
+    setFlashcardsDone(flashcardsDone + 1);
+    if (currentIndex + 1 < currentFlashcards.length) {
+      renderCurrentFlashcard();
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const forgetOnClick = () => {
+    setFlashcardsDone(flashcardsDone + 1);
+    if (currentIndex + 1 < currentFlashcards.length) {
+      renderCurrentFlashcard();
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  renderCurrentFlashcard();
+
+  const close = () => {
+    console.log(flashcardsDone);
+    console.log(flashcardsCorrect);
+    setFlashcardsCorrect(0);
+    setFlashcardsDone(0);
+    navigation.navigate("learn");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -25,24 +110,26 @@ export default function Exercise() {
         ]}
       >
         <Text style={styles.title}>ANIMALS</Text>
-        <Pressable onPress={() => navigation.navigate("learn")}>
+        <Pressable onPress={() => close()}>
           <FontAwesomeIcon icon={faTimes} size={30} />
         </Pressable>
       </View>
-
-      <View style={styles.flashcard}>
-        <Text style={styles.word}>Word</Text>
-        <Text style={styles.description}>Longer definition of the word</Text>
-      </View>
+      <View style={styles.flashcard}>{renderedFlashcard}</View>
       <View style={styles.controlsContainer}>
         <View style={styles.row}>
-          <FontAwesomeIcon icon={faCheck} size={30} />
-          <FontAwesomeIcon icon={faTimes} size={30} />
-          <FontAwesomeIcon icon={faUndo} size={30} />
+          <Pressable onPress={() => rememberOnClick()}>
+            <FontAwesomeIcon icon={faCheck} size={30} />
+          </Pressable>
+          <Pressable onPress={() => forgetOnClick()}>
+            <FontAwesomeIcon icon={faTimes} size={30} />
+          </Pressable>
+          <Pressable onPress={() => setFront(!isFront)}>
+            <FontAwesomeIcon icon={faUndo} size={30} />
+          </Pressable>
         </View>
       </View>
       <View style={[{ marginTop: 150 }, styles.controlsContainer]}>
-        <Drawer currentNum={2}></Drawer>
+        <Drawer sendCurrentNumToParent={sendCurrentNumToParent}></Drawer>
       </View>
     </SafeAreaView>
   );

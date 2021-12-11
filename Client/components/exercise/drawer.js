@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -17,13 +17,18 @@ import {
   faUndo,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Drawer(props) {
+export default function Drawer({ sendCurrentNumToParent }) {
   var rows = [];
   var current = false;
-  for (var i = 1; i < 6; i++) {
-    current = props.currentNum == i;
+  const [currentNum, setCurrentNum] = useState(1);
+  const onDrawerClick = (i) => {
+    setCurrentNum(i);
+    sendCurrentNumToParent(i);
+  };
+  for (let i = 1; i < 6; i++) {
+    current = currentNum == i;
     rows.push(
-      <Pressable key={i}>
+      <Pressable key={i} onPress={() => onDrawerClick(i)}>
         <Text style={[{ fontSize: 18 }, current && styles.current]}>{i}</Text>
       </Pressable>
     );
