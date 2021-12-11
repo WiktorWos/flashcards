@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Auth from "./components/auth/auth";
 import QuickActions from "./components/quick-actions/quickActions";
@@ -9,6 +9,8 @@ import FlashcardSets from "./components/sets/sets";
 import Set from "./components/sets/set";
 import AddSet from "./components/sets/addSet";
 import Exercise from "./components/exercise/exercise";
+import { createStackNavigator } from "@react-navigation/stack";
+import Home from "./components/home/home";
 
 const myTheme = {
   ...DefaultTheme,
@@ -19,10 +21,10 @@ const myTheme = {
 };
 
 export default function App() {
+  //   const [isSignedIn, setSignedIn] = useState(false);
   return (
-    // <NavigationContainer theme={myTheme}>
-    //   <Tabs />
-    // </NavigationContainer>
-    <Exercise></Exercise>
+    <NavigationContainer theme={myTheme}>
+      <Tabs />
+    </NavigationContainer>
   );
 }

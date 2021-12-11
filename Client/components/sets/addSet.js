@@ -1,3 +1,4 @@
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -9,15 +10,25 @@ import {
 } from "react-native";
 import FlashcardSVG from "../../assets/flashcard.svg";
 import Checkbox from "../ui-elements/checkbox";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AddSet() {
   const [checked, onChange] = useState(false);
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.container}>
       <FlashcardSVG width={250} height={150} style={{ marginTop: 40 }} />
       <View style={styles.formView}>
-        <Text style={styles.title}>ADD SET</Text>
+        <View
+          style={[styles.row, { width: 300, justifyContent: "space-around" }]}
+        >
+          <Text style={styles.title}>ADD SET</Text>
+          <Pressable onPress={() => navigation.navigate("learn")}>
+            <FontAwesomeIcon icon={faTimes} size={30} />
+          </Pressable>
+        </View>
         <TextInput
           placeholder="Title"
           style={styles.inputStyle}
@@ -62,7 +73,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    marginTop: 30,
     fontSize: 50,
     fontWeight: "bold",
   },

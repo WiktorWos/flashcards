@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
 import {
   StyleSheet,
@@ -10,9 +11,13 @@ import {
 import FlashcardSVG from "../../assets/flashcard.svg";
 
 export default function Set(props) {
+  const navigation = useNavigation();
   const LEARN_COLOR = "#00B0FF";
   return (
-    <Pressable style={styles.actionWithDescripion}>
+    <Pressable
+      style={styles.actionWithDescripion}
+      onPress={() => navigation.navigate("exercise")}
+    >
       <View style={[styles.action, { borderColor: LEARN_COLOR }]}>
         <FlashcardSVG width="133" height="96"></FlashcardSVG>
       </View>

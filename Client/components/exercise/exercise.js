@@ -10,18 +10,26 @@ import {
 import FlashcardSVG from "../../assets/flashcard.svg";
 import Checkbox from "../ui-elements/checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import {
-  faCheck,
-  faCross,
-  faTimes,
-  faUndo,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faUndo } from "@fortawesome/free-solid-svg-icons";
 import Drawer from "./drawer";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Exercise() {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>ANIMALS</Text>
+      <View
+        style={[
+          styles.row,
+          { marginTop: 80, width: "100%", justifyContent: "space-around" },
+        ]}
+      >
+        <Text style={styles.title}>ANIMALS</Text>
+        <Pressable onPress={() => navigation.navigate("learn")}>
+          <FontAwesomeIcon icon={faTimes} size={30} />
+        </Pressable>
+      </View>
+
       <View style={styles.flashcard}>
         <Text style={styles.word}>Word</Text>
         <Text style={styles.description}>Longer definition of the word</Text>
@@ -77,7 +85,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    marginTop: 80,
     marginBottom: 120,
     fontSize: 50,
     fontWeight: "bold",

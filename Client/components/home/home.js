@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import Homepage from "../../assets/homepage.svg";
 import { SVGHomepage, SvgUri, SvgXml } from "react-native-svg";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Home() {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <Image source={require("../../assets/logo.png")} style={styles.logo} />
@@ -22,7 +24,10 @@ export default function Home() {
         Flashcards is a vocabulary learning app. We are using Leitner system
         which provides efficient learning process.
       </Text>
-      <Pressable style={styles.button}>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate("auth")}
+      >
         <Text style={styles.btnText}>Get started!</Text>
       </Pressable>
     </SafeAreaView>

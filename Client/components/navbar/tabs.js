@@ -1,4 +1,5 @@
 import React from "react";
+import { Text } from "react-native";
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
@@ -10,15 +11,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import QuickActions from "../quick-actions/quickActions";
 import Auth from "../auth/auth";
 import FlashcardSets from "../sets/sets";
+import AddSet from "../sets/addSet";
+import Exercise from "../exercise/exercise";
+import Home from "../home/home";
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs() {
   return (
     <Tab.Navigator
+      initialRouteName="start"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -68,6 +74,46 @@ export default function Tabs() {
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faChartBar} color={color} size={30} />
           ),
+        }}
+      />
+      <Tab.Screen
+        name="add set"
+        component={AddSet}
+        options={{
+          tabBarButton: () => null,
+          tabBarStyle: {
+            display: "none",
+          },
+        }}
+      />
+      <Tab.Screen
+        name="exercise"
+        component={Exercise}
+        options={{
+          tabBarButton: () => null,
+          tabBarStyle: {
+            display: "none",
+          },
+        }}
+      />
+      <Tab.Screen
+        name="auth"
+        component={Auth}
+        options={{
+          tabBarButton: () => null,
+          tabBarStyle: {
+            display: "none",
+          },
+        }}
+      />
+      <Tab.Screen
+        name="start"
+        component={Home}
+        options={{
+          tabBarButton: () => null,
+          tabBarStyle: {
+            display: "none",
+          },
         }}
       />
     </Tab.Navigator>

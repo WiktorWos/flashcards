@@ -15,8 +15,10 @@ import { Dimensions } from "react-native";
 import Login from "./login";
 import Register from "./register";
 import { AccountContext } from "./accountContext";
+import { useRoute } from "@react-navigation/native";
 
 export default function Auth() {
+  const route = useRoute();
   const windowWidth = Dimensions.get("window").width;
   const [active, setActive] = useState("signin");
   const switchToSignup = () => {
