@@ -18,6 +18,7 @@ import FlashcardSets from "../sets/sets";
 import AddSet from "../sets/addSet";
 import Exercise from "../exercise/exercise";
 import Home from "../home/home";
+import Stats from "../stats/stats";
 
 const Tab = createBottomTabNavigator();
 
@@ -69,7 +70,7 @@ export default function Tabs() {
       />
       <Tab.Screen
         name="stats"
-        component={QuickActions}
+        component={Stats}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faChartBar} color={color} size={30} />

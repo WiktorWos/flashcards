@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCheck, faTimes, faUndo } from "@fortawesome/free-solid-svg-icons";
 import Drawer from "./drawer";
 import { useNavigation } from "@react-navigation/native";
+import { setStats } from "../../service/stats";
 
 export default function Exercise() {
   const navigation = useNavigation();
@@ -94,8 +95,20 @@ export default function Exercise() {
   renderCurrentFlashcard();
 
   const close = () => {
-    console.log(flashcardsDone);
-    console.log(flashcardsCorrect);
+    const userData = {
+      userID: 100,
+      doneFlashcards: flashcardsDone,
+      correctFlashcards: flashcardsCorrect,
+      learned: 0,
+      recordedTime: 120,
+    };
+    const setData = {
+      setID: 20,
+      doneFlashcards: flashcardsDone,
+      correctFlashcards: flashcardsCorrect,
+    };
+
+    setStats(userData, setData);
     setFlashcardsCorrect(0);
     setFlashcardsDone(0);
     navigation.navigate("learn");
