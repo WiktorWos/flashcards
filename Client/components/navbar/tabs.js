@@ -19,6 +19,7 @@ import AddSet from "../sets/addSet";
 import Exercise from "../exercise/exercise";
 import Home from "../home/home";
 import Stats from "../stats/stats";
+import SingleChat from "../chat/chat";
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +53,7 @@ export default function Tabs() {
       />
       <Tab.Screen
         name="shared"
-        component={QuickActions}
+        component={SingleChat}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faShareAlt} color={color} size={30} />
@@ -61,7 +62,7 @@ export default function Tabs() {
       />
       <Tab.Screen
         name="chat"
-        component={QuickActions}
+        component={SingleChat}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faComments} color={color} size={30} />
