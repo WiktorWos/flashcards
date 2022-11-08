@@ -20,8 +20,18 @@ import Exercise from "../exercise/exercise";
 import Home from "../home/home";
 import Stats from "../stats/stats";
 import SingleChat from "../chat/chat";
+import ChatList from "../chat/chatList";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
 const Tab = createBottomTabNavigator();
+const ChatStack = createNativeStackNavigator();
+
+function ChatStackScreen() {
+    return (<ChatStack.Navigator>
+        <ChatStack.Screen name="Chats" component={ChatList} />
+        <ChatStack.Screen name="Chat" component={SingleChat} />
+    </ChatStack.Navigator>);
+}
 
 export default function Tabs() {
   return (
@@ -61,8 +71,8 @@ export default function Tabs() {
         }}
       />
       <Tab.Screen
-        name="chat"
-        component={SingleChat}
+        name="chat screen"
+        component={ChatStackScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faComments} color={color} size={30} />
@@ -118,6 +128,16 @@ export default function Tabs() {
           },
         }}
       />
+        {/*<Tab.Screen*/}
+        {/*    name="single chat"*/}
+        {/*    component={SingleChat}*/}
+        {/*    options={{*/}
+        {/*        tabBarButton: () => null,*/}
+        {/*        tabBarStyle: {*/}
+        {/*            display: "none",*/}
+        {/*        },*/}
+        {/*    }}*/}
+        {/*/>*/}
     </Tab.Navigator>
   );
 }
