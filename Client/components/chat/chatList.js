@@ -64,7 +64,7 @@ export default function ChatList() {
                     <FontAwesomeIcon icon={faSearch} size={25} />
                     <TextInput style={styles.inputStyle} secureTextEntry={false} />
                 </View>
-                <Pressable onPress={() => navigation.navigate("add set")}>
+                <Pressable onPress={() => navigation.navigate("Search chat")}>
                     <FontAwesomeIcon icon={faPlus} size={25} />
                 </Pressable>
             </View>

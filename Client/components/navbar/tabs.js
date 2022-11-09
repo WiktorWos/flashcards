@@ -22,6 +22,7 @@ import Stats from "../stats/stats";
 import SingleChat from "../chat/chat";
 import ChatList from "../chat/chatList";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import AddChat from "../chat/addChat";
 
 const Tab = createBottomTabNavigator();
 const ChatStack = createNativeStackNavigator();
@@ -30,6 +31,7 @@ function ChatStackScreen() {
     return (<ChatStack.Navigator>
         <ChatStack.Screen name="Chats" component={ChatList} />
         <ChatStack.Screen name="Chat" component={SingleChat} />
+        <ChatStack.Screen name="Search chat" component={AddChat} />
     </ChatStack.Navigator>);
 }
 
@@ -127,10 +129,10 @@ export default function Tabs() {
             display: "none",
           },
         }}
-      />
+        />
         {/*<Tab.Screen*/}
-        {/*    name="single chat"*/}
-        {/*    component={SingleChat}*/}
+        {/*    name="add chat"*/}
+        {/*    component={AddChat}*/}
         {/*    options={{*/}
         {/*        tabBarButton: () => null,*/}
         {/*        tabBarStyle: {*/}
