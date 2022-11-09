@@ -19,8 +19,21 @@ import AddSet from "../sets/addSet";
 import Exercise from "../exercise/exercise";
 import Home from "../home/home";
 import Stats from "../stats/stats";
+import SingleChat from "../chat/chat";
+import ChatList from "../chat/chatList";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import AddChat from "../chat/addChat";
 
 const Tab = createBottomTabNavigator();
+const ChatStack = createNativeStackNavigator();
+
+function ChatStackScreen() {
+    return (<ChatStack.Navigator>
+        <ChatStack.Screen name="Chats" component={ChatList} />
+        <ChatStack.Screen name="Chat" component={SingleChat} />
+        <ChatStack.Screen name="Search chat" component={AddChat} />
+    </ChatStack.Navigator>);
+}
 
 export default function Tabs() {
   return (
@@ -52,7 +65,7 @@ export default function Tabs() {
       />
       <Tab.Screen
         name="shared"
-        component={QuickActions}
+        component={SingleChat}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faShareAlt} color={color} size={30} />
@@ -60,8 +73,8 @@ export default function Tabs() {
         }}
       />
       <Tab.Screen
-        name="chat"
-        component={QuickActions}
+        name="chat screen"
+        component={ChatStackScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faComments} color={color} size={30} />
@@ -116,7 +129,17 @@ export default function Tabs() {
             display: "none",
           },
         }}
-      />
+        />
+        {/*<Tab.Screen*/}
+        {/*    name="add chat"*/}
+        {/*    component={AddChat}*/}
+        {/*    options={{*/}
+        {/*        tabBarButton: () => null,*/}
+        {/*        tabBarStyle: {*/}
+        {/*            display: "none",*/}
+        {/*        },*/}
+        {/*    }}*/}
+        {/*/>*/}
     </Tab.Navigator>
   );
 }
