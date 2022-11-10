@@ -18,10 +18,10 @@ export default function Set(props) {
       style={styles.actionWithDescripion}
       onPress={() => navigation.navigate("exercise")}
     >
-      <View style={[styles.action, { borderColor: LEARN_COLOR }]}>
+      <View style={[styles.action, { borderColor: LEARN_COLOR}]}>
         <FlashcardSVG width="133" height="96"></FlashcardSVG>
       </View>
-      <Text style={[styles.description, { color: LEARN_COLOR }]}>
+      <Text style={[styles.description, { color: LEARN_COLOR}]}>
         {props.name}
       </Text>
     </Pressable>
@@ -31,7 +31,6 @@ export default function Set(props) {
 const styles = StyleSheet.create({
   actionWithDescripion: {
     alignItems: "center",
-    color: "#00B0FF",
   },
   description: {
     fontSize: 18,
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
     height: 133,
     borderWidth: 3,
     borderRadius: 15,
-    borderColor: "#00B0FF",
     alignItems: "center",
     justifyContent: "center",
   },

@@ -53,6 +53,8 @@ const DATA = [
   },
 ];
 
+const LEARN_COLOR = "#00B0FF";
+
 const renderItem = ({ item }) => <Set name={item.title}></Set>;
 
 export default function FlashcardSets() {

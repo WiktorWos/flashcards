@@ -23,6 +23,8 @@ import SingleChat from "../chat/chat";
 import ChatList from "../chat/chatList";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import AddChat from "../chat/addChat";
+import SharedSets from "../sets/sharedSets";
+import SearchShared from "../sets/searchForShared";
 
 const Tab = createBottomTabNavigator();
 const ChatStack = createNativeStackNavigator();
@@ -32,6 +34,13 @@ function ChatStackScreen() {
         <ChatStack.Screen name="Chats" component={ChatList} />
         <ChatStack.Screen name="Chat" component={SingleChat} />
         <ChatStack.Screen name="Search chat" component={AddChat} />
+    </ChatStack.Navigator>);
+}
+
+function SharedStackScreen() {
+    return (<ChatStack.Navigator>
+        <ChatStack.Screen name="Shared" component={SharedSets} />
+        <ChatStack.Screen name="Search shared" component={SearchShared} />
     </ChatStack.Navigator>);
 }
 
@@ -65,7 +74,7 @@ export default function Tabs() {
       />
       <Tab.Screen
         name="shared"
-        component={SingleChat}
+        component={SharedStackScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesomeIcon icon={faShareAlt} color={color} size={30} />

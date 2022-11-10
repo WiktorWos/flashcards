@@ -35,23 +35,32 @@ export default function QuickActions() {
             Learn
           </Text>
         </Pressable>
-        <Pressable style={styles.actionWithDescripion}>
-          <View style={[styles.action, { borderColor: SHARED_COLOR }]}>
+        <Pressable
+            style={styles.actionWithDescripion}
+            onPress={() => navigation.navigate("shared")}
+        >
+          <View style={[styles.action, { borderColor: LEARN_COLOR }]}>
             <SharedSVG width="133" height="96"></SharedSVG>
           </View>
-          <Text style={[styles.description, { color: SHARED_COLOR }]}>
+          <Text style={[styles.description, { color: LEARN_COLOR }]}>
             Shared sets
           </Text>
         </Pressable>
       </View>
       <View style={styles.row}>
-        <Pressable style={styles.actionWithDescripion}>
+        <Pressable
+            style={styles.actionWithDescripion}
+            onPress={() => navigation.navigate("Chats")}
+        >
           <View style={[styles.action, { borderColor: CHAT_COLOR }]}>
             <ChatSVG width="133" height="96"></ChatSVG>
           </View>
           <Text style={[styles.description, { color: CHAT_COLOR }]}>Chat</Text>
         </Pressable>
-        <Pressable style={styles.actionWithDescripion}>
+        <Pressable
+            style={styles.actionWithDescripion}
+            onPress={() => navigation.navigate("stats")}
+        >
           <View style={[styles.action, { borderColor: STATS_COLOR }]}>
             <StatsSVG width="133" height="96"></StatsSVG>
           </View>
